@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://github.com/MatMercer/$pkgname/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('6434dbeb80a6f235dd2d4767ea8d5837')
+md5sums=('0e4951f499df3df5973e68ece0257fd7')
 validpgpkeys=()
 
 prepare() {
