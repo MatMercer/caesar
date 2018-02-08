@@ -24,20 +24,19 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz"
-        "$pkgname-$pkgver.patch")
+source=("https://github.com/MatMercer/$pkgname/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=()
+md5sums=('6434dbeb80a6f235dd2d4767ea8d5837')
 validpgpkeys=()
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+	# patch -p1 -i "$srcdir/$pkgname-$pkgver"
 }
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
+	# ./configure --prefix=/usr
 	make
 }
 
