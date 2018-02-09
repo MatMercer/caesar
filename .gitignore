@@ -1,3 +1,4 @@
 caesar
 *.tar.gz
 src/
+*.swp

@@ -4,10 +4,18 @@
 
 int main(int argc, char** args)
 {
+	bool useDictionary = false;
+	char* dictionary;
+
 	if (argc < 2)
 	{
 		printf("caesar: Error, please specify k: caesar [K]\n", stderr);
 		return 1;
+	}
+	if (argc == 3)
+	{
+		useDictionary = true;
+		dictionary = args[2];
 	}
 
 	int k = atoi(args[1]);
@@ -17,7 +25,13 @@ int main(int argc, char** args)
 	{
 		if (isASCIILetter(ch))
 		{
-			printf("%c", caesar(ch, k));
+			if (useDictionary)
+			{
+				printf("%c", caesarDict(ch, k, dictionary));
+			} else
+			{
+				printf("%c", caesar(ch, k));
+			}
 		} else
 		{
 			printf("%c", ch);

@@ -42,7 +42,7 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"
-	make -k check
+	# make -k check
 }
 
 package() {
