@@ -41,6 +41,8 @@ int caesar(int c, int k)
 {
 	k %= 26;
 
+	// int oldc = c;
+
 	if (isLowerCase(c))
 	{
 		c += k;
@@ -51,7 +53,7 @@ int caesar(int c, int k)
 		}
 		else if (c > ASCII_LO_R2)
 		{
-			c = (c - ASCII_LO_R2) + ASCII_LO_R1;
+			c = (c - ASCII_LO_R2 - 1) + ASCII_LO_R1;
 		}
 	} else
 	{
@@ -63,9 +65,11 @@ int caesar(int c, int k)
 		}
 		else if (c > ASCII_UP_R2)
 		{
-			c = (c - ASCII_UP_R2) + ASCII_UP_R1;
+			c = (c - ASCII_UP_R2 - 1) + ASCII_UP_R1;
 		}
 	}
+
+	// printf(" %d -> %d ", oldc, c);
 
 	return c;
 }
