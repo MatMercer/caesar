@@ -27,7 +27,7 @@ int main(int argc, char** args)
 		{
 			if (useDictionary)
 			{
-				printf("%c", caesarDict(ch, k, dictionary));
+				printf("%c", caesarDict(ch, k, cleanDict(dictionary)));
 			} else
 			{
 				printf("%c", caesar(ch, k));
