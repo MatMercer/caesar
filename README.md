@@ -23,8 +23,9 @@ This is the usage
 ### Mixing everything up!
 ```bash
 $ echo "This is the usage" | ./caesar 16 "Dictionary" | ./caesar 22 | ./caesar 3 "super"
-```
+
 Pdro ro uda qokca
 
 $ echo "Pdro ro uda qokca" | ./caesar -3 "super" | ./caesar -22 | ./caesar -16 "Dictionary"
 This is the usage
+```
