@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <ctype.h>
 #include "caesar.h"
 
 // ASCII ranges
@@ -22,7 +23,7 @@ char* cleanDict(char* dict)
 	int s = strlen(dict);
 	for (i = 0; i < s; i += 1)
 	{
-		if (!charInDict(dict[i], cDict) && isASCIILetter(dict[i]))
+		if (!charInDict(dict[i], cDict) && isalpha(dict[i]))
 		{
 			length += 1;
 			cDict = realloc(cDict, length * sizeof(int));
@@ -66,11 +67,6 @@ int posInDict(int c, char* dict)
 	return -1;
 }
 
-bool isASCIILetter(int c)
-{
-	return (c >= ASCII_LO_R1 && c <= ASCII_LO_R2) || (c >= ASCII_UP_R1 && c <= ASCII_UP_R2);
-}
-
 
 bool isLowerCase(int c)
 {
@@ -79,33 +75,35 @@ bool isLowerCase(int c)
 
 int caesar(int c, int k)
 {
-	k %= 26;
-
 	// int oldc = c;
 
-	if (isLowerCase(c))
+	if (isalpha(c))
 	{
-		c += k;
+		if (isLowerCase(c))
+		{
+			k %= 26;
+			c += k;
 
-		if (c < ASCII_LO_R1)
+			if (c < ASCII_LO_R1)
+			{
+				c = ASCII_LO_R2 - (ASCII_LO_R1 - c) + 1;
+			}
+			else if (c > ASCII_LO_R2)
+			{
+				c = (c - ASCII_LO_R2 - 1) + ASCII_LO_R1;
+			}
+		} else
 		{
-			c = ASCII_LO_R2 - (ASCII_LO_R1 - c) + 1;
-		}
-		else if (c > ASCII_LO_R2)
-		{
-			c = (c - ASCII_LO_R2 - 1) + ASCII_LO_R1;
-		}
-	} else
-	{
-		c += k;
+			c += k;
 
-		if (c < ASCII_UP_R1)
-		{
-			c = ASCII_UP_R2 - (ASCII_UP_R1 - c) + 1;
-		}
-		else if (c > ASCII_UP_R2)
-		{
-			c = (c - ASCII_UP_R2 - 1) + ASCII_UP_R1;
+			if (c < ASCII_UP_R1)
+			{
+				c = ASCII_UP_R2 - (ASCII_UP_R1 - c) + 1;
+			}
+			else if (c > ASCII_UP_R2)
+			{
+				c = (c - ASCII_UP_R2 - 1) + ASCII_UP_R1;
+			}
 		}
 	}
 

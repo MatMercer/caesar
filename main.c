@@ -23,18 +23,12 @@ int main(int argc, char** args)
 	int ch;
 	while ( (ch=getchar()) != EOF ) 
 	{
-		if (isASCIILetter(ch))
+	if (useDictionary)
 		{
-			if (useDictionary)
-			{
-				printf("%c", caesarDict(ch, k, cleanDict(dictionary)));
-			} else
-			{
-				printf("%c", caesar(ch, k));
-			}
+			printf("%c", caesarDict(ch, k, cleanDict(dictionary)));
 		} else
 		{
-			printf("%c", ch);
+			printf("%c", caesar(ch, k));
 		}
 	}
 
