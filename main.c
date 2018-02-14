@@ -18,7 +18,14 @@ int main(int argc, char** args)
 		dictionary = args[2];
 	}
 
-	int k = atoi(args[1]);
+	char* endptr;
+	int k = strtol(args[1], &endptr, 10);
+
+	if (*endptr != '\0') 
+	{
+		printf("caesar: Error, invalid number for k\n", stderr);
+		return 2;
+	}
 	
 	int ch;
 	while ( (ch=getchar()) != EOF ) 
