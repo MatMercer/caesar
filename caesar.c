@@ -66,7 +66,7 @@ int posInDict(int c, char* dict)
 
 bool isLowerCase(int c)
 {
-	return (c & 32) == 32;
+	return (c & 32) != 0;
 }
 
 int caesar(int c, int k)
