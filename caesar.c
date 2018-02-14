@@ -6,11 +6,11 @@
 #include "caesar.h"
 
 // ASCII ranges
-#define ASCII_LO_R1 65
-#define ASCII_LO_R2 90
+#define ASCII_LO_R1 97
+#define ASCII_LO_R2 122
 
-#define ASCII_UP_R1 97
-#define ASCII_UP_R2 122
+#define ASCII_UP_R1 65
+#define ASCII_UP_R2 90
 
 char* cleanDict(char* dict)
 {
@@ -70,7 +70,7 @@ int posInDict(int c, char* dict)
 
 bool isLowerCase(int c)
 {
-	return (c >= ASCII_LO_R1 && c <= ASCII_LO_R2);
+	return (c & 32) == 32;
 }
 
 int caesar(int c, int k)
@@ -107,7 +107,7 @@ int caesar(int c, int k)
 		}
 	}
 
-	// printf(" %d -> %d ", oldc, c);
+	// printf(" %d -> %d = %c ", oldc, c, c);
 
 	return c;
 }
