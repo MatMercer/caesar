@@ -34,15 +34,14 @@ char* cleanDict(char* dict)
 
 bool charInDict(int c, char* dict)
 {
-	int s = strlen(dict);
-	int i;
-
-	for (i = 0; i < s; i += 1)
+	while (*dict != '\0')
 	{
-		if (dict[i] == c)
+		if (*dict == c)
 		{
 			return true;
 		}
+
+		dict += 1;
 	}
 	
 	return false;
@@ -50,17 +49,16 @@ bool charInDict(int c, char* dict)
 
 int posInDict(int c, char* dict)
 {
-	int s = strlen(dict);
-
-	int i;
 	int pos = 0;
-	for (i = 0; i < s; i++)
+	while (*dict != '\0')
 	{
-		if (c == dict[i])
+		if (c == *dict)
 		{
 			return pos;
 		}
 		pos += 1;
+
+		dict += 1;
 	}
 	return -1;
 }
