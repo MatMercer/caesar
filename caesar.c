@@ -128,7 +128,7 @@ int caesarDict(int c, int k, char* dict)
 		// dcdc [a, d] k = -1
 		// acac
 
-		int dictPos = k + s + posInDict(c, dict);
+		int dictPos = k + posInDict(c, dict);
 
 		//printf("%d\n\n", dictPos);
 
