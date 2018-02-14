@@ -14,21 +14,19 @@
 
 char* cleanDict(char* dict)
 {
-	int i;
-
 	char* cDict = calloc(1, sizeof(int));
 	cDict[0] = '\0';
 
-	int length = 0;
-	int s = strlen(dict);
-	for (i = 0; i < s; i += 1)
+	int dictLen = 0;
+	while (*dict != '\0')
 	{
-		if (!charInDict(dict[i], cDict) && isalpha(dict[i]))
+		if (!charInDict(*dict, cDict) && isalpha(*dict))
 		{
-			length += 1;
-			cDict = realloc(cDict, length * sizeof(int));
-			cDict[length - 1] = dict[i];
+			dictLen += 1;
+			cDict = realloc(cDict, dictLen * sizeof(int));
+			cDict[dictLen - 1] = *dict;
 		}
+		dict += 1;
 	}
 
 	return cDict;
