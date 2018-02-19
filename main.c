@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "caesar.h"
+#include <string.h>
 
 int main(int argc, char** args)
 {
 	bool useDictionary = false;
-	char* dictionary;
+	char dictionary[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'};
+
 
 	if (argc < 2)
 	{
@@ -15,7 +17,20 @@ int main(int argc, char** args)
 	if (argc == 3)
 	{
 		useDictionary = true;
-		dictionary = args[2];
+		
+		char* endptr;
+		int l = strtol(args[2], &endptr, 10);
+
+		if (*endptr != '\0') 
+		{
+			printf("caesar: Error, invalid number for dict length\n", stderr);
+			return 2;
+		}
+
+		l %= 25;
+
+		dictionary[l] = '\0';
+
 	}
 
 	char* endptr;
