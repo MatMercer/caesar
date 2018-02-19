@@ -27,17 +27,46 @@ int main(int argc, char** args)
 		return 2;
 	}
 	
+	// Alloc result arrays
+	char* cripto = calloc(1, sizeof(char));
+	cripto[0] = '\0';
+	char* decripto = calloc(1, sizeof(char));
+	decripto[0] = '\0';
+
+	size_t criptoLen = 0;
 	int ch;
 	while ( (ch=getchar()) != EOF ) 
 	{
 	if (useDictionary)
 		{
-			printf("%c", caesarDict(ch, k, cleanDict(dictionary)));
+			char cCaesar = caesarDict(ch, k, cleanDict(dictionary));
+
+			criptoLen += 1;
+
+			cripto = realloc(cripto, criptoLen * sizeof(char));
+			decripto = realloc(decripto, criptoLen * sizeof(char));
+
+			// Send results to array
+			cripto[criptoLen - 1] = cCaesar;
+			decripto[criptoLen - 1] = caesarDict(cCaesar, -k, cleanDict(dictionary));;
+
 		} else
 		{
-			printf("%c", caesar(ch, k));
+			char cCaesar = caesar(ch, k);
+
+			criptoLen += 1;
+
+			cripto = realloc(cripto, criptoLen * sizeof(char));
+			decripto = realloc(decripto, criptoLen * sizeof(char));
+
+			// Send results to array
+			cripto[criptoLen - 1] = cCaesar;
+			decripto[criptoLen - 1] = caesar(cCaesar, -k);
 		}
 	}
+
+	printf("%s\n", cripto);
+	printf("%s\n", decripto);
 
 	return 0;	
 }
