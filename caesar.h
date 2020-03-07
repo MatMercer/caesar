@@ -5,8 +5,8 @@
 
 bool isLowerCase(int c);
 int caesar(int c, int k);
-int caesarDict(int c, int k, char* dict);
-char* cleanDict(char* dict);
-bool charInDict(int c, char* dict);
+int caesarDict(int c, int k, char const* dict);
+char* cleanDict(char const* dict);
+bool charInDict(int c, char const* dict);
 
 #endif

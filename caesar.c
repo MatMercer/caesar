@@ -1,9 +1,9 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include <ctype.h>
 #include "caesar.h"
+#include <ctype.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 // ASCII ranges
 #define ASCII_LO_R1 97
@@ -12,9 +12,9 @@
 #define ASCII_UP_R1 65
 #define ASCII_UP_R2 90
 
-char* cleanDict(char* dict)
+char* cleanDict(char const* dict)
 {
-	char* cDict = calloc(1, sizeof(int));
+	char* cDict = calloc(1, sizeof(char));
 	cDict[0] = '\0';
 
 	int dictLen = 0;
@@ -23,7 +23,7 @@ char* cleanDict(char* dict)
 		if (!charInDict(*dict, cDict) && isalpha(*dict))
 		{
 			dictLen += 1;
-			cDict = realloc(cDict, dictLen * sizeof(int));
+			cDict = realloc(cDict, dictLen * sizeof(char));
 			cDict[dictLen - 1] = *dict;
 		}
 		dict += 1;
@@ -32,7 +32,7 @@ char* cleanDict(char* dict)
 	return cDict;
 }
 
-bool charInDict(int c, char* dict)
+bool charInDict(int c, char const* dict)
 {
 	while (*dict != '\0')
 	{
@@ -47,7 +47,7 @@ bool charInDict(int c, char* dict)
 	return false;
 }
 
-int posInDict(int c, char* dict)
+int posInDict(int c, char const* dict)
 {
 	int pos = 0;
 	while (*dict != '\0')
@@ -108,7 +108,7 @@ int caesar(int c, int k)
 	return c;
 }
 
-int caesarDict(int c, int k, char* dict)
+int caesarDict(int c, int k, char const* dict)
 {
 	if (charInDict(c, dict))
 	{
