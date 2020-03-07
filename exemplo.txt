@@ -1,0 +1,16 @@
+Specify the data: Eu ainda sei programar em C depois de muito tempo. Repitam comigo crianças. Eu sei programar!
+Specify the key (negative for reverse): 9
+Using 9 as the key
+Transformed data:
+
+Nd jrwmj bnr yaxpajvja nv L mnyxrb mn vdrcx cnvyx. Anyrcjv lxvrpx larjwçjb. Nd bnr yaxpajvja!
+
+
+mat@crazywriter ‹ master ●● › : ~/Documents/projects/misc/c/caesar
+[0] % ./caesarinteractive
+Specify the data: Nd jrwmj bnr yaxpajvja nv L mnyxrb mn vdrcx cnvyx. Anyrcjv lxvrpx larjwçjb. Nd bnr yaxpajvja!
+Specify the key (negative for reverse): -9
+Using -9 as the key
+Transformed data:
+
+Eu ainda sei programar em C depois de muito tempo. Repitam comigo crianças. Eu sei programar!

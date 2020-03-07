@@ -1,6 +1,6 @@
+#include "caesar.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "caesar.h"
 
 int main(int argc, char** args)
 {
